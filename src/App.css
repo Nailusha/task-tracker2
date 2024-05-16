@@ -1,38 +1,123 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app-container {
+  background-color: black;
+  color: white;
   min-height: 100vh;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-evenly;
+}
+
+.task-edit-popup {
+  position: fixed; /* Фиксированное позиционирование по отношению к окну браузера */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Центрирование попапа */
+  width: 300px; /* Или другой подходящий размер */
+  background: white;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Убедитесь, что попап будет над другими элементами */
+}
+
+.task-edit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.task-edit-header span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.task-edit-header button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="time"],
+input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.time-selection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-container {
+  padding: 30px;
+  border-bottom: 1px solid white; /* белая линия под каждой задачей */
+  margin-bottom: 10px; /* отступ для визуального разделения задач */
+}
+
+.task-details {
+  display: flex;
+  gap: 16vh;
+  margin-bottom: 20px;
+}
+
+.task-duration {
+  color: blue; /* синий цвет для времени выполнения */
+  font-weight: bold; /* жирное начертание для лучшей видимости */
+}
+
+.task-controls button {
+  margin-left: 100px;
+}
+
+input[type="text"] {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #333;
+  border: none;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.today-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.today-actions button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.load-more-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.load-more-container button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.footer-controls {
+  display: flex;
+}
+
+.footer-controls button {
+  display: flex;
+  flex-direction: row;
+  margin-right: 20px;
+  align-items: center;
 }
