@@ -6,51 +6,86 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center; /* Улучшено для лучшего центрирования контента */
 }
 
-.task-edit-popup {
-  position: fixed; /* Фиксированное позиционирование по отношению к окну браузера */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Центрирование попапа */
-  width: 300px; /* Или другой подходящий размер */
-  background: white;
+/* Стили для заднего фона попапа, затемняющего основное содержимое */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; /* Убедитесь, что этот z-index выше любого другого элемента страницы */
+}
+
+/* Стили для контейнера попапа редактирования задач */
+.edit-task-popup {
+  position: absolute; /* Это позволяет более гибко управлять внутренним позиционированием */
+  width: 90%; /* Адаптивная ширина, максимально 400px */
+  max-width: 400px;
+  background-color: black;
   padding: 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Убедитесь, что попап будет над другими элементами */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1051; /* Убедитесь, что попап находится над overlay */
+  border-radius: 8px; /* Небольшое закругление углов для эстетики */
 }
 
-.task-edit-header {
+.popup-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  font-size: 20px; /* Увеличение размера заголовка для улучшения видимости */
 }
 
-.task-edit-header span {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.task-edit-header button {
+.popup-header button {
   border: none;
   background: none;
   cursor: pointer;
+  font-size: 24px;
+  color: #cac7c7; /* Цвет иконки закрытия */
 }
 
-input[type="text"],
-input[type="time"],
-input[type="date"] {
+.popup-body {
+  margin-top: 15px;
+}
+
+.popup-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+input[type="text"], input[type="datetime-local"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc; /* Добавление границы для улучшения видимости поля ввода */
+}
+
+.popup-footer {
+  padding: 10px 15px;
+  border: none;
+  background-color: #686969;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px; /* Добавление закругления углов кнопок */
+}
+
+.popup-footer button:hover {
+  background-color: #0056b3;
+}
+
+
+
+input[type="text"], input[type="time"], input[type="date"] {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
-}
-
-.time-selection {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .task-container {
@@ -72,15 +107,6 @@ input[type="date"] {
 
 .task-controls button {
   margin-left: 100px;
-}
-
-input[type="text"] {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-  background: #333;
-  border: none;
-  color: white;
 }
 
 .today-header {

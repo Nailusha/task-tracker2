@@ -56,18 +56,25 @@ function App() {
         <span onClick={handleEditProfile}><img src={User} alt='Пользователь' />{username}</span>
       </div>
       {isTaskPopupOpen && currentTask && (
-        <EditTaskPopup
-          task={currentTask}
-          onClose={handleCloseTaskPopup}
-          onSave={updateTask}
-          onDelete={deleteTask}
-        />
+        <>
+          <div className="overlay" onClick={handleCloseTaskPopup}></div>
+          <EditTaskPopup
+            task={currentTask}
+            onClose={handleCloseTaskPopup}
+            onSave={updateTask}
+            onDelete={deleteTask}
+          />
+        </>
       )}
       {isProfilePopupOpen && (
-        <ProfileLoginPopup onClose={handleCloseProfilePopup} />
+        <>
+          <div className="overlay" onClick={handleCloseProfilePopup}></div>
+          <ProfileLoginPopup onClose={handleCloseProfilePopup} />
+        </>
       )}
     </div>
   );
 }
 
 export default App;
+
